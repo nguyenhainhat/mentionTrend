@@ -1,0 +1,15 @@
+@use "../../scss/variables" as *;
+@use "../../scss/mixin" as *;
+input {
+    border: 0;
+    background-color: $primary-color;
+    padding: 0.5rem 2.5rem;
+    @include fontSize(10px, 1vw, 14px);
+    color: $secondary-color;
+    font-family: $font-family;
+    border-bottom: 1.2px solid $fourth-color;
+    &::placeholder {
+    color: $secondary-color;
+
+    }
+}

@@ -1,0 +1,200 @@
+@use "../../scss/variables" as *;
+@use "../../scss/mixin" as *;
+@use "../../scss/breakpoint" as *;
+@use "../../scss/custom" as *;
+
+.header {
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $primary-color;
+    z-index: 99;
+    transition: height 0.5s ease, background-color 0.5s ease;
+    &.shrink {
+        background-color: $third-color;
+    }
+    &_wrap {
+        @include flex(center, space-between);
+        height: 100%;
+        
+        @include minWidth($md){
+            padding: 0 2rem;
+            justify-content: space-between;
+        }
+    }
+    &_right {
+        @include flex(center,space-around);
+        width: 64%;
+        @include minWidth($md) {
+            width: unset;
+        }
+    }
+
+    &_nav {
+        @include flex(center);
+        gap: unset;
+        margin-top: -14px;
+        & > * {
+            margin-left: 2rem;
+        }
+
+        li {
+            padding: 5px 0;
+            font-weight: 700;
+            position: relative;
+            font-size: 1.5rem;
+            color: $secondary-color;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                color: $third-color;
+                transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+    
+            &.active::after,
+            &:hover::after {
+                width: 100%;
+                transition: width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+        }
+        @include minWidth($md) {
+            @include flex(center, space-between);
+
+            & > * {
+                margin-left: 0;
+            }
+            position: unset;
+            transform: translateY(0);
+            display: flex;
+            margin-top: unset;
+            justify-content: space-around;
+            gap: 30px;
+            @include hideVisible(1, unset);
+        }
+    }
+
+    &_info {
+        @include flex(center, center);
+        gap: 25px;
+        color: $secondary-color;
+        @include space(padding-inline, 10);
+        @include minWidth($md) {
+            @include flex(center, end);
+            padding-inline: unset
+        }
+    }
+
+    &_search {
+        @include fontSize(18px,2vw,25px)
+    }
+    &_access {
+        @include flex(center, space-between);
+        gap: 19px;
+    }
+    &-btn {
+        height: 28px;
+        width: 60px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        text-align: center;
+        outline: none;
+        color: transparent;
+        margin-inline: auto;
+  
+        div {
+          content: "";
+  
+          position: absolute;
+          width: 50px;
+          height: 4px;
+          background-color: $secondary-color;
+          border-radius: 4px;
+          opacity: 1;
+          visibility: unset;
+          transition: all 0.3s ease;
+        }
+        &::after,
+        &::before {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 4px;
+          background-color: $secondary-color;
+          transition: all 0.3s ease;
+          border-radius: 4px;
+          transform: unset;
+        }
+        &::after {
+          bottom: 0;
+        }
+        &::before {
+          top: 0;
+        }
+        @include minWidth($md) {
+          display: none;
+        }
+    }
+    .menu_open {
+        &::before {
+          transform: rotate(45deg) translate(20%, 0);
+          transition: all 0.3s ease;
+        }
+        &::after {
+          transform: rotate(-45deg) translate(30%, -8px);
+          transition: all 0.3s ease;
+        }
+        div {
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+      }
+    .none_menu {
+        position: absolute;
+        right: 37%;
+        transform: translate(100%, 68%) scale(0.5);
+        @include hideVisible(0, hidden);
+    }
+    .nav_open {
+        position: absolute;
+        right: 9%;
+        top: -28%;
+        transform: translate(20%, 68%) scale(1);
+        width: 46vw;
+        text-align: center;
+        background-color: $primary-color;
+        @include hideVisible(1, unset);
+        & > * {
+          color: $secondary-color;
+          @extend .pt-10, .pb-10;
+        }
+        input {
+            margin-block: 1rem;
+        }
+      
+    }
+    .logo {
+        margin-right: unset;
+        @include minWidth($md) {
+            margin-right: 30px;
+        }
+    }
+    .active {
+        & > * {
+
+            color: $third-color;
+            transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+    }
+}

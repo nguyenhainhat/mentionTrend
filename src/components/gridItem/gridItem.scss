@@ -1,0 +1,20 @@
+@use "../../scss/variables" as *;
+@use "../../scss/mixin" as *;
+@use "../../scss/breakpoint" as *;
+@use "../../scss/custom" as *;
+
+.modal_item {
+    &_info {
+        @include flex(start, start);
+        gap: 20px;
+    }
+    &_content {
+        @include flex(center, center, column);
+
+    }
+    .gridContent_item_right {
+        width: inherit;
+        margin-left: unset;
+        gap: 40px;
+    }
+}

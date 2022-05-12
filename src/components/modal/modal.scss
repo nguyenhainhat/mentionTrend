@@ -1,0 +1,50 @@
+@use "../../scss/variables" as *;
+@use "../../scss/mixin" as *;
+@use "../../scss/breakpoint" as *;
+@use "../../scss/custom" as *;
+
+.modal {
+  @include flex(center, center);
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  overflow: auto;
+  background-color: rgba($color: $primary-color, $alpha: 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  &_content {
+      padding: 2rem;
+      background-color: $secondary-color;
+      width: 50%;
+      opacity: 0;
+      transform: translateY(-250px);
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      @include minWidth($md) {
+          width: 80%;
+      }
+      &_close {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          font-size: 1.5rem;
+          cursor: pointer;
+
+          &:hover {
+              color: $third-color;
+          }
+      }
+  }
+  &.active &_content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+  }
+}

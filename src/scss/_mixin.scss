@@ -1,0 +1,108 @@
+@use "./variables" as *;
+
+@mixin flex(
+  $align-item: unset,
+  $justify-content: unset,
+  $flex-direction: unset
+) {
+  display: flex;
+  align-items: $align-item;
+  justify-content: $justify-content;
+  flex-direction: $flex-direction;
+}
+
+@mixin fontSize($min, $value, $max) {
+  font-size: clamp($min, $value, $max);
+}
+
+@mixin overlay {
+  background-color: rgba($color: #000000, $alpha: 0.6);
+}
+
+@mixin size($width, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin space($position, $px) {
+  #{$position}: #{$px}px;
+}
+
+@mixin minWidth($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin maxWidth($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin hideVisible($opacity, $visibility) {
+  opacity: $opacity;
+  visibility: $visibility;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@mixin btn($clz: $secondary-color, $bgclz: $primary-color) {
+  position: relative;
+  background-color: $bgclz;
+  border: transparent;
+  outline: transparent;
+  color: $clz;
+  font-weight: 500;
+  font-family: $font-family;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @include fontSize(16px, 2vw, 18px);
+  @include size(100px, 40px);
+  &:hover {
+    background-color: $third-color;
+    transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  @include minWidth($sm) {
+    @include size(200px, 80px);
+  }
+}
+
+@mixin btnSmall($clz: $secondary-color, $bgclz: $sixth-color) {
+  position: relative;
+  background-color: $bgclz;
+  border: transparent;
+  outline: transparent;
+  color: $clz;
+  font-weight: normal;
+  font-family: $font-family;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @include fontSize(10px, 1vw, 12px);
+  @include size(142px, 40px);
+  &:hover {
+    background-color: $third-color;
+    transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  // @include minWidth($sm) {
+  //   @include size(200px, 80px);
+  // }
+}
+
+
+@mixin btnOutlineSmall($clz: $primary-color, $bgclz: $secondary-color) {
+  position: relative;
+  background-color: $bgclz;
+  border: 1px solid $primary-color;
+  outline: 1px solid $primary-color;
+  color: $clz;
+  font-weight: normal;
+  font-family: $font-family;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @include fontSize(10px, 1vw, 12px);
+  @include size(142px, 40px);
+  &:hover {
+    background-color: $third-color;
+    transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  // @include minWidth($sm) {
+  //   @include size(200px, 80px);
+  // }
+}
