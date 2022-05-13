@@ -4,17 +4,102 @@
 @use "../../scss/custom" as *;
 
 .modal_item {
-    &_info {
-        @include flex(start, start);
-        gap: 20px;
+  &_info {
+    @include flex(start, start);
+    gap: 20px;
+  }
+  &_content {
+    @include flex(start, center, column);
+  }
+  &_container {
+    @include flex(baseline, center, column);
+    gap: 30px;
+  }
+  &_btn {
+    @include flex(start, center, column);
+    gap: 20px;
+    @include minWidth($md) {
+      flex-direction: row;
     }
-    &_content {
-        @include flex(center, center, column);
+  }
+  .gridContent_item_right {
+    width: inherit;
+    margin-right: auto;
+    margin-left: unset;
+    gap: 40px;
+  }
+  &_bottom {
+    @include flex(center, center, column);
+    gap: 12px;
+    &_icon {
+      @include flex(baseline, start);
+      gap: 20px;
+      @include minWidth($lg) {
+        @include flex(baseline, center);
 
+      }
     }
-    .gridContent_item_right {
-        width: inherit;
-        margin-left: unset;
-        gap: 40px;
+    &_btn {
+      button:first-child {
+        margin-right: 10px;
+      }
     }
+  }
+}
+
+.comment {
+
+    &_container {
+        @include flex(start, center, column);
+        gap: 20px;
+        @include minWidth($lg) {
+          @include flex(center, center, row);
+        }
+    }
+
+  &-input {
+    background-color: $secondary-color;
+    outline: 1px solid $primary-color;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    &::placeholder {
+      color: $primary-color;
+    }
+  }
+
+  &_left {
+      @include flex(unset, center, column);
+      gap: 30px;
+      &-input {
+          @include flex(unset, center);
+          input {
+              width: 100%;
+          }
+      }
+      &_user {
+          &_info {
+              @include flex(center, start);
+              gap: 10px;
+          }
+          &_item {
+              margin-bottom: 2rem;
+          }
+
+          &_title {
+              margin-top: 1rem;
+          }
+      }
+      &-btn {
+          width: 100%;
+      }
+  }
+
+  &_right {
+      margin-bottom: auto;
+      & > * {
+          padding-bottom: 1rem;
+          margin-bottom: 3rem;
+          border-bottom: 0.5px solid $primary-color;
+      }
+  }
 }

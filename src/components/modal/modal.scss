@@ -21,16 +21,17 @@
   &_content {
       padding: 2rem;
       background-color: $secondary-color;
-      width: 50%;
+      @include size(80vw, 100vh);
       opacity: 0;
       transform: translateY(-250px);
+      overflow: scroll;
       position: relative;
       transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
       @include minWidth($md) {
           width: 80%;
       }
       &_close {
-          position: absolute;
+          position: fixed;
           right: 5px;
           top: 5px;
           font-size: 1.5rem;

@@ -69,8 +69,8 @@
 @mixin btnSmall($clz: $secondary-color, $bgclz: $sixth-color) {
   position: relative;
   background-color: $bgclz;
-  border: transparent;
-  outline: transparent;
+  border: 1px solid $bgclz;
+  outline: 1px solid $bgclz;
   color: $clz;
   font-weight: normal;
   font-family: $font-family;
@@ -100,6 +100,8 @@
   @include size(142px, 40px);
   &:hover {
     background-color: $third-color;
+    border: 1px solid $third-color;
+    outline: 1px solid $third-color;
     transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
   }
   // @include minWidth($sm) {
